@@ -45,7 +45,7 @@ while True:
 		ticket_template = Image.open("templates/%s.png" % str(mod))
 
 		#colour
-		r, g, b = (0,0,0)
+		r, g, b = (0,0,0)	
 		if mod == 1 or mod == 2:
 			r, g, b = (91,150,153)
 		elif mod == 3 or mod == 4:
@@ -72,12 +72,12 @@ while True:
 		qr_data = "%s%s%s%s%s" % (name, student_id, seq_num, order_id, checked_in)
 		qr.add_data(qr_data)
 		qr.make(fit=True)
-		qr_img = qr.make_image(back_color="transparent")
-		qr_img = qr_img.resize((309,309))
+		qr_img = qr.make_image(fill_color='#%02x%02x%02x' % (r, g, b))
+		qr_img = qr_img.resize((310,310))
 		logo = Image.open("logo.PNG")
-		logo = logo.resize((40, 40))
-		qr_img.paste(logo, (135, 135))
-		ticket_template.paste(qr_img, (347, 1444), mask=None)
+		logo = logo.resize((100, 100))
+		qr_img.paste(logo, (105, 105))
+		ticket_template.paste(qr_img, (345, 1444))
 		
 		ticket = ImageDraw.Draw(ticket_template)
 
