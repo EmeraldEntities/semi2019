@@ -74,8 +74,11 @@ while True:
 		qr.make(fit=True)
 		qr_img = qr.make_image(back_color="transparent")
 		qr_img = qr_img.resize((309,309))
-
+		logo = Image.open("logo.PNG")
+		logo = logo.resize((40, 40))
+		qr_img.paste(logo, (135, 135))
 		ticket_template.paste(qr_img, (347, 1444), mask=None)
+		
 		ticket = ImageDraw.Draw(ticket_template)
 
 		#fonts
