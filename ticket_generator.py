@@ -61,8 +61,6 @@ while True:
 		order_id = attendee['order_id']
 		checked_in = attendee['checked_in']
 		name = attendee['profile']['name'].upper()
-		if(name.lower() == 'Ucheoma ObijiNnorom'.lower()):
-			name = "Ucheoma Obiji-Nnorom".upper()
 		student_id = attendee['profile']['email'][0:9]
 
 		seq_num = "{0:0=3d}".format(i + 1)
@@ -74,7 +72,8 @@ while True:
 			border = 0,
 		)
 		table_number = str(get_column("tables.csv", student_id))
-		qr_data = "%s%s%s" % (order_id, id, seq_num)qr.add_data(qr_data)
+		qr_data = attendee['barcodes'][0]['barcode']
+		qr.add_data(qr_data)
 		qr.make(fit=True)
 		qr_img = qr.make_image()
 		qr_img = qr_img.resize((310,310))
@@ -89,18 +88,18 @@ while True:
 		id_font = ImageFont.truetype("Oswald-regular.ttf", 52)
 		name_font = ImageFont.truetype("Oswald-regular.ttf", 57)
 		table_font = ImageFont.truetype("Oswald-bold.ttf", 63)
-		nick_marshall_font = ImageFont.truetype("Oswald-regular.ttf",53)
+		nick_marshall_font = ImageFont.truetype("Oswald-regular.ttf",46)
 
 		#name
-		if name = 'NICHOLAS BRIAN THOMAS MARSHALL':
-			w,h = ticket.textsize(name, nick_marshall_font)
-			offset = nick_marshall_font.getoffset(name)
-			ticket.text(((1000-w)/2-3,66-offset[1]), name, (r,g,b), font=nick_marshall_font)
+		if name == 'NICHOLAS BRIAN THOMAS MARSHALL':
+			w,h = ticket.textsize('NICHOLAS BRIAN THOMAS MARSHALL', nick_marshall_font)
+			offset = nick_marshall_font.getoffset('NICHOLAS BRIAN THOMAS MARSHALL')
+			ticket.text(((1000-w)/2-3,66-offset[1]), 'NICHOLAS BRIAN THOMAS MARSHALL', (r,g,b), font=nick_marshall_font)
 		else:
 			w,h = ticket.textsize(name, name_font)
 			offset = name_font.getoffset(name)
-			ticket.text(((1000-w)/2-3,66-offset[1]), name, (r,g,b), font=name_font)
-		# print (65+(100-h)/2)
+			ticket.text(((1000-w)/2-3,66-offset[1]), name, (r,g,b), font=name_font, align ="centre")
+		
 		#student id
 		if name == 'Janice Au Yeung' or name == 'Erik Morales' or name == 'Franklin Zhang':
 			student_id = 'GUEST'
