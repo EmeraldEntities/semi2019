@@ -75,7 +75,7 @@ while True:
 		qr_data = attendee['barcodes'][0]['barcode']
 		qr.add_data(qr_data)
 		qr.make(fit=True)
-		qr_img = qr.make_image()
+		qr_img = qr.make_image(fill_color=qr_colour)
 		qr_img = qr_img.resize((310,310))
 		# logo = Image.open("logo.png")
 		# logo = logo.resize((100, 100))
