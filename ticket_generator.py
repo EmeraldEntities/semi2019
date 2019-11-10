@@ -91,20 +91,19 @@ while True:
 		nick_marshall_font = ImageFont.truetype("Oswald-regular.ttf",46)
 
 		#name
-		if name == 'NICHOLAS BRIAN THOMAS MARSHALL':
-			w,h = ticket.textsize('NICHOLAS BRIAN THOMAS MARSHALL', nick_marshall_font)
-			offset = nick_marshall_font.getoffset('NICHOLAS BRIAN THOMAS MARSHALL')
-			ticket.text(((1000-w)/2-3,66-offset[1]), 'NICHOLAS BRIAN THOMAS MARSHALL', (r,g,b), font=nick_marshall_font)
+		if name == 'NICOLAS BRIAN THOMAS MARSHALL':
+			w,h = ticket.textsize('NICOLAS BRIAN THOMAS MARSHALL', nick_marshall_font)
+			offset = nick_marshall_font.getoffset('NICOLAS BRIAN THOMAS MARSHALL')
+			ticket.text(((1000-w)/2-3,66-offset[1]), 'NICOLAS BRIAN THOMAS MARSHALL', (r,g,b), font=nick_marshall_font)
 		else:
 			w,h = ticket.textsize(name, name_font)
 			offset = name_font.getoffset(name)
 			ticket.text(((1000-w)/2-3,66-offset[1]), name, (r,g,b), font=name_font, align ="centre")
 		
 		#student id
-		if name == 'Janice Au Yeung' or name == 'Erik Morales' or name == 'Franklin Zhang':
+		if name == 'Janice Au Yeung'.upper() or name == 'Erik Morales'.upper() or name == 'Franklin Zhang'.upper():
 			student_id = 'GUEST'
-		else:
-			student_id = attendee['profile']['email'][0:9]
+
 		w, h= ticket.textsize(student_id, id_font)
 		ticket.text(((1000-w)/2,1927-h), student_id, (0,0,0), font=id_font)
 
