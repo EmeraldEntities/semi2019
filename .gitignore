@@ -1,5 +1,5 @@
 
 Semi/
-tickets/
-logo.jpg
-logo.PNG
+*.png
+*.pdf
+*.jpg
